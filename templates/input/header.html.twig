@@ -1,0 +1,75 @@
+<header class="sticky-header">
+    <div class="container-fluid">
+        <div class="d-flex align-items-center justify-content-between">
+            <div class="site-logo">
+                <a href="/"><img src="assets/img/logo.png" alt="Genial"></a>
+            </div>
+            <div class="header-right">
+                <div class="search-area">
+                    <a href="javascript:void(0)" class="search-btn"><i class="fas fa-search"></i></a>
+                    <div class="search-form">
+                        <a href="#" class="search-close"><i class="fal fa-times"></i></a>
+                        <form action="#">
+                            <input type="search" placeholder="Введите слово для поиска">
+                        </form>
+                        <div class="search-overly"></div>
+                    </div>
+                </div>
+
+                <div class="offcanvas-panel">
+                    <a href="javascript:void(0)" class="panel-btn">
+							<span>
+								<span></span>
+								<span></span>
+								<span></span>
+							</span>
+                    </a>
+                    <div class="panel-overly"></div>
+                    <div class="offcanvas-items">
+
+                        <a href="javascript:void(0)" class="panel-close">
+                            Свернуть <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </a>
+
+                        <ul class="offcanvas-menu">
+                            <li>
+                                <a href="/">Главная</a>
+                            </li>
+                            {% if app.user %}
+                                <li><a href="/cabinet">Личный кабинет</a>
+                                    <ul class="submenu">
+                                        <li><a href="/cabinet">Профиль</a></li>
+                                        <li><a href="index-2.html">Создать запись</a></li>
+                                        <li><a href="index-3.html">Просмотреть записи</a></li>
+                                        <li><a class="bg-light" href="/logout">Выйти</a></li>
+                                    </ul>
+                                </li>
+                            {% elseif not app.user %}
+                                <li><a href="/login">Вход</a></li>
+                                <li><a href="/register">Регистрация</a></li>
+                            {% endif %}
+                            <li><a href="about.html">Записи</a>
+                                <ul class="submenu">
+                                    <li><a href="index.html">Тема 1</a></li>
+                                    <li><a href="index-2.html">Тема 2</a></li>
+                                    <li><a href="index-3.html">Тема 3</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/about">О Блоге</a></li>
+                            <li><a href="/contact">Контакты</a></li>
+                        </ul>
+
+                        <div class="social-icons">
+                            <ul>
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
