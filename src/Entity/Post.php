@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\PostRepository;
 use App\Traits\InterfaceEntity;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PostRepository::class)
@@ -29,6 +31,10 @@ class Post
     private $text;
 
     /**
+     * * @Assert\File(
+     *     mimeTypes = {"image/jpeg", "image/png"},
+     *     mimeTypesMessage = "Please upload a valid image"
+     * )
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $img;
@@ -79,7 +85,7 @@ class Post
         return $this->img;
     }
 
-    public function setImg(string $img): self
+    public function setImg($img): self
     {
         $this->img = $img;
 

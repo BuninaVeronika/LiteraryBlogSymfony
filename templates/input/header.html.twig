@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="d-flex align-items-center justify-content-between">
             <div class="site-logo">
-                <a href="/"><img src="assets/img/logo.png" alt="Genial"></a>
+                <a href="/"><img src="../../assets/img/logo.png" alt="Genial"></a>
             </div>
             <div class="header-right">
                 <div class="search-area">
@@ -36,11 +36,11 @@
                                 <a href="/">Главная</a>
                             </li>
                             {% if app.user %}
-                                <li><a href="/cabinet">Личный кабинет</a>
+                                <li><a href="/user/{{ app.user.id }}">Личный кабинет</a>
                                     <ul class="submenu">
-                                        <li><a href="/cabinet">Профиль</a></li>
-                                        <li><a href="index-2.html">Создать запись</a></li>
-                                        <li><a href="index-3.html">Просмотреть записи</a></li>
+                                        <li><a href="/user/{{ app.user.id }}">Профиль</a></li>
+                                        <li><a href="/post/new">Создать запись</a></li>
+                                        <li><a href="/post">Просмотреть записи</a></li>
                                         <li><a class="bg-light" href="/logout">Выйти</a></li>
                                     </ul>
                                 </li>

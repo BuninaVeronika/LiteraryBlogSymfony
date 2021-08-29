@@ -1,21 +1,21 @@
-<!DOCTYPE html>
-
-<title>Post index</title>
+{% extends 'app/base.html.twig' %}
+{% block title %}
+    {{ title }}
+{% endblock %}
 
 {% block body %}
-    <h1>Post index</h1>
+    <h1>Посты</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Header</th>
-                <th>Description</th>
-                <th>Text</th>
-                <th>Img</th>
-                <th>Id</th>
-                <th>CreatedAt</th>
-                <th>UpdatedAt</th>
-                <th>actions</th>
+                <th>Заголовок</th>
+                <th>Краткое описание</th>
+                <th>Содержание поста</th>
+                <th>Изображение</th>
+                <th>Дата создание</th>
+                <th>Дата обновления</th>
+                <th>Активности</th>
             </tr>
         </thead>
         <tbody>
@@ -25,21 +25,20 @@
                 <td>{{ post.description }}</td>
                 <td>{{ post.text }}</td>
                 <td>{{ post.img }}</td>
-                <td>{{ post.id }}</td>
                 <td>{{ post.createdAt ? post.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ post.updatedAt ? post.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('post_show', {'id': post.id}) }}">show</a>
-                    <a href="{{ path('post_edit', {'id': post.id}) }}">edit</a>
+                    <a href="{{ path('post_show', {'id': post.id}) }}">Показать</a>
+                    <a href="{{ path('post_edit', {'id': post.id}) }}">Редактировать</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="8">no records found</td>
+                <td colspan="8">Нет постов</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('post_new') }}">Create new</a>
+    <a href="{{ path('post_new') }}">Cоздать новый</a>
 {% endblock %}

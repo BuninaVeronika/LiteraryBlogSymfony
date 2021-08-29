@@ -18,15 +18,13 @@ class UserType extends AbstractType
             ->add('email', EmailType::class, [
                 'label' => 'Email'
             ])
-            ->add('plainPassword', RepeatedType::class,[
-                'type'=>PasswordType::class,[
-                    'first_options'=>[
-                        'label'=>'Пароль'
-                    ],
-                    'two_options'=>[
-                        'label'=>'Повторить пароль'
-                    ],
-                ]
+            ->add('password', RepeatedType::class, [
+                'type' => PasswordType::class,
+                'invalid_message' => 'Ваши пароли не совпадают',
+                'options' => ['attr' => ['class' => 'password-field']],
+                'required' => true,
+                'first_options' => ['label' => 'Пароль'],
+                'second_options' => ['label' => 'Повторить пароль'],
             ]);
     }
 

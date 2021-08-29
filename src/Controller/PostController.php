@@ -22,6 +22,7 @@ class PostController extends AbstractController
     {
         return $this->render('post/index.html.twig', [
             'posts' => $postRepository->findAll(),
+            'title' => 'Посты',
         ]);
     }
 
@@ -35,6 +36,16 @@ class PostController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $file = $form->get('img')->getData();
+
+            $fileName = $this->generateUniqueFileName().'.'.$file->guessExtension();
+            $file->move(
+                $this->getParameter('brochures_directory'),
+                $fileName
+            );
+
+            $post->setImg($fileName);
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($post);
             $entityManager->flush();
@@ -45,7 +56,15 @@ class PostController extends AbstractController
         return $this->renderForm('post/new.html.twig', [
             'post' => $post,
             'form' => $form,
+            'title' => 'Новый пост',
         ]);
+    }
+    /**
+     * @return string
+     */
+    private function generateUniqueFileName()
+    {
+        return md5(uniqid());
     }
 
     /**
@@ -55,6 +74,7 @@ class PostController extends AbstractController
     {
         return $this->render('post/show.html.twig', [
             'post' => $post,
+            'title' => 'Пост',
         ]);
     }
 
@@ -75,6 +95,7 @@ class PostController extends AbstractController
         return $this->renderForm('post/edit.html.twig', [
             'post' => $post,
             'form' => $form,
+            'title' => 'Редактировать пост',
         ]);
     }
 
