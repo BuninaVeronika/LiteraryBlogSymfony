@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Categories;
 use App\Entity\Post;
+use phpDocumentor\Reflection\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -33,20 +34,14 @@ class PostType extends AbstractType
                 'mapped' => false,
                 'label'=> 'Категории']
             )
-            ->add('createdAt',  DateType::class, [
-                'label'=> 'Дата создания']
-            )
-            ->add('updatedAt',  DateType::class, [
-                'label'=> 'Дата обновления']
-            )
-            ->add('img', FileType::class, array(
+            ->add('img', FileType::class, [
                     'multiple' => false,
                     'label'=> 'Изображение',
                     'data_class' => null,
-                    'attr' => array(
+                    'attr' => [
                         'accept' => 'image/*',
-                    ),
-                )
+                    ],
+                ]
             )
             ->add('categories',null,[
                 'label'=> 'Категории'

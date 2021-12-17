@@ -44,6 +44,11 @@ class Post
      */
     private $categories;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="posts")
+     */
+    private $user;
+
     public function getHeader(): ?string
     {
         return $this->header;
@@ -100,6 +105,18 @@ class Post
     public function setCategories($categories): void
     {
         $this->categories = $categories;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
     }
 
 }

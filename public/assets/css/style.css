@@ -4272,3 +4272,17 @@ footer .footer-copyright-area .copyright-text span {
     color: #000000;
     font-weight: 700;
 }
+
+.form_custom label{
+    float: left;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.form_custom .nice-select{
+    width: 50%;
+}
+
+.form_custom .nice-select.open .list {
+ width: 100%;
+}

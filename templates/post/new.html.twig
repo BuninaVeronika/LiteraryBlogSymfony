@@ -4,9 +4,10 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Создать новый пост</h1>
-
+<h1 class="ml-3" >Создать новый пост</h1>
+<div class="w-75 m-3">
     {{ include('post/_form.html.twig') }}
 
     <a href="{{ path('post_index') }}">Вернуться к списку</a>
+</div>
 {% endblock %}
